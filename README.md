@@ -1,7 +1,7 @@
 Python Command Line Interface tool to manage To-Do tasks. Designed to re-learn the basics of python before beginning to understand more advanced topics using it as a tool.
 
 | Command | Option Location | Implemented or Not | Option's Intended Purpose                                                                                                                   |
-| :-----: | :-------------: | :----------------: | :-----------------------------------------------------------------------------------------------------------------------------------------: |
+| :-----: | :-------------: | :----------------: | :------------------------------------------------------------------------------------------------------------------------------------------ |
 | View    | Main Menu       | Implemented        | Menu Navigation and task viewing. Go from the Main Menu to the View Menu. The Read (R) of CRUD.                                             |
 | Exit    | Main Menu       | Implemented        | Menu Navigation. Exiting the program in a way that saves to file before exiting to maintain tasks throughout program runs.                  |
 | Return  | View Menu       | Implemented        | Menu Navigation. Go back from View Menu to Main Menu.                                                                                       |
