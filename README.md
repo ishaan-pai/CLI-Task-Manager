@@ -8,7 +8,6 @@ Python Command Line Interface tool to manage To-Do tasks. Designed to re-learn t
 | Add     | View Menu       | Semi-Implemented   | Add a new task to list / Make new task. The Create (C) of CRUD.                                                                             |
 | Update  | View Menu       | Not Implemented    | Update a currently existing task. Verify correct task is updated and deal with collisions easily. The Update (U) of CRUD.                   |
 | Delete  | View Menu       | Not Implemented    | Delete a currently existing task. Verify the right task is what gets deleted and handle collisions without issue. The Delete (D) of CRUD.   |
-| ------- | --------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
 
 {Insert photos here}
 
