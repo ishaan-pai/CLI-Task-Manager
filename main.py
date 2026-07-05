@@ -1,4 +1,5 @@
 import Task
+import datetime
 
 while (1):
     taskList = Task.Task.readTasksFromFile()
@@ -42,7 +43,9 @@ while (1):
                                         updatedName = input("What would you like the new name to be?: ")
                                         task.setName(updatedName)
                                     case "Date":
-                                        pass
+                                        updatedDate = input("What would you like the new date to be? (mm/dd/yy): ")
+                                        task.setDate(datetime.datetime.strptime(updatedDate, "%m/%d/%y").date())
+                        Task.Task.saveTasksToFile(taskList)
                     case "Delete":
                         deletionScore = 0
                         taskName = input("What task would you like to delete?: ")
