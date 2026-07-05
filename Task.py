@@ -2,10 +2,10 @@ import datetime
 import csv
 
 class Task:
-    def __init__(self, taskName: str, completeStatus = "Incomplete", date = datetime.datetime.now().strftime("%x")):
+    def __init__(self, taskName: str, completeStatus = "Incomplete", date: datetime.date = None):
         self.name = taskName
         self.completeStatus = completeStatus
-        self.date = date
+        self.date = date if date is not None else datetime.date.today()
 
     def __str__(self) -> str:
         return f"Task Name: {self.name} | Completedness: {self.completeStatus} | Date: {self.date}"
@@ -17,10 +17,10 @@ class Task:
         return self.name
 
     def markIncomplete(self) -> None:
-        self.setStatus("Incomplete")
+        self.completeStatus = "Incomplete"
 
     def markComplete(self) -> None:
-        self.setStatus("Complete")
+        self.completeStatus = "Complete"
 
     def getStatus(self):
         return self.completeStatus
@@ -32,7 +32,7 @@ class Task:
         return self.date
 
     def taskObjToCSVInfo(self):
-        return [self.name, self.completeStatus, self.date]
+        return [self.name, self.completeStatus, self.date.strftime("%m/%d/%y")]
 
     @staticmethod
     def saveTasksToFile(taskList: list) -> None:
@@ -56,4 +56,8 @@ class Task:
             taskObjList.append(Task(taskCSVInfo[0], taskCSVInfo[1], datetime.datetime.strptime(taskCSVInfo[2], "%m/%d/%y").date()))
         taskListFile.close()
         return taskObjList
-
+    
+    @staticmethod
+    def clearFile() -> None:
+        f = open("taskList.txt", "wt")
+        f.close()

@@ -3,6 +3,7 @@ import Task
 while (1):
     taskList = Task.Task.readTasksFromFile()
 
+    print("\n")
     print("What would you like to do?\n")
     print("- View all tasks")
     print("- Save and Exit")
@@ -20,7 +21,7 @@ while (1):
                     print("All Tasks: ")
                     for task in taskList:
                         print("- " + str(task) + "\n")
-                print("Further Options: Add Task, Update Task, Delete Task, Return to Main Menu")
+                print("Further Options: Add Task, Update Task, Delete Task, Mark Tasks, Return to Main Menu")
                 viewMenuChoice = input("Choice: ")
 
                 match viewMenuChoice:
@@ -30,14 +31,47 @@ while (1):
                         Task.Task.saveTasksToFile(taskList)
                         print("Task Added! \n")
                     case "Update":
-                        pass
+                        updateScore = 0
+                        taskName = input("What task would you like to update?: ")
+                        for task in taskList:
+                            if task.getName() == taskName:
+                                print("How would you like to update the task? Update Name, Update Date")
+                                updateMenuChoice = input("Your Choice: ")
+                                match updateMenuChoice:
+                                    case "Name":
+                                        updatedName = input("What would you like the new name to be?: ")
+                                        task.setName(updatedName)
+                                    case "Date":
+                                        pass
                     case "Delete":
-                        taskName = input("Which task would you like to delete?: ")
+                        deletionScore = 0
+                        taskName = input("What task would you like to delete?: ")
                         for task in taskList:
                             if task.getName() == taskName:
                                 taskList.remove(task)
-                            else:
-                                print("Task doesn't exist to delete.")
+                                print("Task Deleted !")
+                                Task.Task.clearFile()
+                                deletionScore += 1
+                                break
+                        if deletionScore == 0:
+                            print("Task does not exist to delete.")
+                        Task.Task.saveTasksToFile(taskList)
+                    case "Mark":
+                        markScore = 0
+                        taskName = input("What task would you like to mark?: ")
+                        for task in taskList:
+                            if task.getName() == taskName:
+                                wantedCompletionStatus = input("Mark as Complete or Incomplete?: ")
+                                match wantedCompletionStatus:
+                                    case "Complete":
+                                        task.markComplete()
+                                        markScore += 1
+                                    case "Incomplete":
+                                        task.markIncomplete()
+                                        markScore += 1
+                        if markScore == 0:
+                            print("Task does not exist to mark.")
+                        Task.Task.saveTasksToFile(taskList)
                     case "Return":
                         break
 
